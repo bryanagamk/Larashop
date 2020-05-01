@@ -22,4 +22,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('users', 'UserController');
+Route::get('/categories/trash', 'CategoryController@trash')->name('categories.trash');
+Route::get('/categories/{id}/restore', 'CategoryController@restore')->name('categories.restore');
+Route::delete(
+    '/categories/{category}/delete-permanent',
+    'CategoryController@deletePermanent'
+)->name('categories.delete-permanent');
 Route::resource('categories', 'CategoryController');
