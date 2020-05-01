@@ -52,7 +52,10 @@ class BookController extends Controller
         }
         $new_book->slug = Str::slug($request->get('title'));
         $new_book->created_by = Auth::user()->id;
+        
         $new_book->save();
+        $new_book->categories()->attach($request->get('categories'));
+
         if ($request->get('save_action') == 'PUBLISH') {
             return redirect()
                 ->route('books.create')
