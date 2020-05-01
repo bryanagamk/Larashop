@@ -111,7 +111,7 @@ class BookController extends Controller
         $book->stock = $request->get('stock');
         $book->price = $request->get('price');
         $new_cover = $request->file('cover');
-        
+
         if ($new_cover) {
             if ($book->cover && file_exists(storage_path('app/public/' .
                 $book->cover))) {
@@ -125,7 +125,7 @@ class BookController extends Controller
 
         $book->save();
         $book->categories()->sync($request->get('categories'));
-        
+
         return redirect()->route('books.edit', [$book->id])->with(
             'status',
             'Book successfully updated'
@@ -140,6 +140,8 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = \App\Book::findOrFail($id);
+        $book->delete();
+        return redirect()->route('books.index')->with('status', 'Book moved to trash');
     }
 }
