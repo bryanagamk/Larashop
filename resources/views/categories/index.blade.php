@@ -42,6 +42,7 @@ Category List
                         @endif
                     </td>
                     <td>
+                        <a href="{{route('categories.show', [$category->id])}}" class="btn btn-primary"> Show </a>
                         <a href="{{route('categories.edit', [$category->id])}}" class="btn btn-info btn-sm"> Edit </a>
                     </td>
                 </tr>
