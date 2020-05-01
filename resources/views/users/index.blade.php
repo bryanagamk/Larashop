@@ -4,14 +4,12 @@
 Users List
 @endsection
 
+@section('content')
 @if(session('status'))
 <div class="alert alert-success">
     {{session('status')}}
 </div>
 @endif
-
-@section('content')
-
 <form action="{{route('users.index')}}">
     <div class="row">
         <div class="col-md-6">
