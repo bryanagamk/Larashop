@@ -120,7 +120,7 @@ class CategoryController extends Controller
         $category->updated_by = Auth::user()->id;
         $category->slug = Str::slug($name);
         $category->save();
-        
+
         return redirect()->route('categories.edit', [$id]);
     }
 
@@ -132,6 +132,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = \App\Category::findOrFail($id);
+        $category->delete();
+        return redirect()->route('categories.index')
+            ->with('status', 'Category successfully moved to trash');
     }
 }
