@@ -33,4 +33,5 @@ Route::get('/ajax/categories/search', 'CategoryController@ajaxSearch');
 Route::resource('categories', 'CategoryController');
 
 Route::get('/books/trash', 'BookController@trash')->name('books.trash');
+Route::post('/books/{book}/restore', 'BookController@restore')->name('books.restore');
 Route::resource('books', 'BookController');
