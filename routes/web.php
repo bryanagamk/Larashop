@@ -39,3 +39,5 @@ Route::delete(
     'BookController@deletePermanent'
 )->name('books.delete-permanent');
 Route::resource('books', 'BookController');
+
+Route::resource('orders', 'OrderController');
