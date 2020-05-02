@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -56,6 +57,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        Validator::make($request->all(), [
+            "name" => "required|min:5|max:100",
+            "username" => "required|min:5|max:20",
+            "roles" => "required",
+            "phone" => "required|digits_between:10,12",
+            "address" => "required|min:20|max:200",
+            "avatar" => "required",
+            "email" => "required|email",
+            "password" => "required",
+            "password_confirmation" => "required|same:password"
+        ])->validate();
+
         $user = new User();
         $user->name = $request->name;
         $user->username = $request->username;
