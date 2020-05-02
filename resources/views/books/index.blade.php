@@ -31,6 +31,9 @@
                 </ul>
             </div>
         </div>
+        
+        <hr class="my-3">
+
         <div class="row mb-3">
             <div class="col-md-12 text-right">
                 <a href="{{route('books.create')}}" class="btn btn-primary">Create book</a>
